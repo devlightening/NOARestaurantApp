@@ -1,4 +1,4 @@
-﻿using Application.Services.Repositories;
+using Application.Services.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +22,9 @@ public static class PersistenceServiceRegistration
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
 
+        services.AddScoped<IRestaurantRepository, RestaurantRepository>();
+        services.AddScoped<IRestaurantRepository, RestaurantRepository>();
+        services.AddScoped<IRestaurantTableRepository, RestaurantTableRepository>();
         return services;
     }
 }

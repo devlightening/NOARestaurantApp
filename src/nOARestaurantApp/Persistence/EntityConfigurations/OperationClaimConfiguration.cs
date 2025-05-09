@@ -6,6 +6,8 @@ using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using NArchitecture.Core.Security.Constants;
+using Application.Features.Restaurants.Constants;
+using Application.Features.RestaurantTables.Constants;
 
 namespace Persistence.EntityConfigurations;
 
@@ -97,6 +99,48 @@ public class OperationClaimConfiguration : IEntityTypeConfiguration<OperationCla
         );
         #endregion
 
+        
+        #region Restaurants
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = RestaurantsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = RestaurantsOperationClaims.Read },
+                new() { Id = ++lastId, Name = RestaurantsOperationClaims.Write },
+                new() { Id = ++lastId, Name = RestaurantsOperationClaims.Create },
+                new() { Id = ++lastId, Name = RestaurantsOperationClaims.Update },
+                new() { Id = ++lastId, Name = RestaurantsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Restaurants
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = RestaurantsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = RestaurantsOperationClaims.Read },
+                new() { Id = ++lastId, Name = RestaurantsOperationClaims.Write },
+                new() { Id = ++lastId, Name = RestaurantsOperationClaims.Create },
+                new() { Id = ++lastId, Name = RestaurantsOperationClaims.Update },
+                new() { Id = ++lastId, Name = RestaurantsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region RestaurantTables
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = RestaurantTablesOperationClaims.Admin },
+                new() { Id = ++lastId, Name = RestaurantTablesOperationClaims.Read },
+                new() { Id = ++lastId, Name = RestaurantTablesOperationClaims.Write },
+                new() { Id = ++lastId, Name = RestaurantTablesOperationClaims.Create },
+                new() { Id = ++lastId, Name = RestaurantTablesOperationClaims.Update },
+                new() { Id = ++lastId, Name = RestaurantTablesOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
         return featureOperationClaims;
     }
 #pragma warning restore S1854 // Unused assignments should be removed
