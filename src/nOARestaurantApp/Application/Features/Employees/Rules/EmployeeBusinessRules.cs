@@ -4,7 +4,6 @@ using NArchitecture.Core.Application.Rules;
 using NArchitecture.Core.CrossCuttingConcerns.Exception.Types;
 using NArchitecture.Core.Localization.Abstraction;
 using Domain.Entities;
-using System.Text.RegularExpressions;
 
 namespace Application.Features.Employees.Rules;
 
@@ -40,64 +39,4 @@ public class EmployeeBusinessRules : BaseBusinessRules
         );
         await EmployeeShouldExistWhenSelected(employee);
     }
-
-    public async Task EmployeeNameMustBeUnique(string name)
-    {
-        var existing = await _employeeRepository.GetAsync(e => e.Name == name);
-        if(existing !=null)
-            throw new BusinessException(EmployeesBusinessMessages.EmployeeNameMustBeUnique);
-
-    }
-    public async Task EmployeeSurnameMustBeUnique(string surname) 
-    {
-        var existing = await _employeeRepository.GetAsync(e => e.Surname == surname);
-        if (existing != null)
-            throw new  BusinessException(EmployeesBusinessMessages.EmployeeSurnameMustBeUnique);
-    }
-
-    public async Task EmployeePhoneNumberMustBeUnique(string phoneNumber)
-    {
-        var existing = await _employeeRepository.GetAsync(e => e.PhoneNumber == phoneNumber);
-        if(existing != null)
-            throw new BusinessException(EmployeesBusinessMessages.EmployeePhoneNumberMustBeUnique);
-    }
-
-    public async Task EmployeeEmailMustBeUnique(string email)
-    {
-        var existing = await _employeeRepository.GetAsync(e => e.Email == email);
-        if (existing != null)
-            throw new BusinessException(EmployeesBusinessMessages.EmployeeEmailMustBeUnique);
-
-    }
-    public async Task EmployeeCannotBeAssignedToMultipleRestaurants(string email , Guid restaurantId)
-    {
-        var existng = await _employeeRepository.GetAsync(e => e.Email == email && e.RestaurantId == restaurantId);
-        if (existng != null)
-            throw new BusinessException(EmployeesBusinessMessages.EmployeeCannotBeAssignedToMultipleRestaurants);
-    }
-
-    public  Task EmployeeMustBeAtLeast18YearsOld(DateTime birthDate)
-    {
-        int age = DateTime.Now.Year - birthDate.Year;
-        if (birthDate.Date > DateTime.Now.AddYears(-age)) age--; //doðum günü geçmemiþse yaþý bir azalt 
-        if(age<18)
-            throw new BusinessException(EmployeesBusinessMessages.EmployeeMustBeAtLeast18YearsOld);
-        return Task.CompletedTask;
-    }
-
-    public Task EmailFormatMustBeValid(string email)
-    {
-        if(!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
-            throw new BusinessException(EmployeesBusinessMessages.EmailFormatMustBeValid);
-        return Task.CompletedTask;
-    }
-
-    public Task PhoneNumberFormatMustBeValid(string phoneNumber)
-    {
-        if (!Regex.IsMatch(phoneNumber, @"^05\d{9}$"))
-            throw new BusinessException(EmployeesBusinessMessages.PhoneNumberFormatMustBeValid);
-        return Task.CompletedTask;
-    }
-
-
 }

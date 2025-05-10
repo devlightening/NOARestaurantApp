@@ -1,4 +1,3 @@
-using Domain.Entities;
 using NArchitecture.Core.Application.Responses;
 
 namespace Application.Features.Employees.Queries.GetById;
@@ -14,5 +13,5 @@ public class GetByIdEmployeeResponse : IResponse
     public string Position { get; set; }
     public Guid RestaurantId { get; set; }
     public Restaurant Restaurant { get; set; }
-    public DateTime  BirthDate { get; set; }
+    public DateTime BirthDate { get; set; }
 }

@@ -7,13 +7,12 @@ using Domain.Entities;
 using NArchitecture.Core.Application.Pipelines.Authorization;
 using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Pipelines.Logging;
-using NArchitecture.Core.Application.Pipelines.Transaction;
 using MediatR;
 using static Application.Features.Employees.Constants.EmployeesOperationClaims;
 
 namespace Application.Features.Employees.Commands.Delete;
 
-public class DeleteEmployeeCommand : IRequest<DeletedEmployeeResponse>, ISecuredRequest, ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
+public class DeleteEmployeeCommand : IRequest<DeletedEmployeeResponse>, ISecuredRequest, ICacheRemoverRequest, ILoggableRequest
 {
     public Guid Id { get; set; }
 

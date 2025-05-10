@@ -26,6 +26,8 @@ public static class PersistenceServiceRegistration
         services.AddScoped<IRestaurantRepository, RestaurantRepository>();
         services.AddScoped<IRestaurantTableRepository, RestaurantTableRepository>();
         services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+        services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+        services.AddScoped<IMenuRepository, MenuRepository>();
         return services;
     }
 }

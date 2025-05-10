@@ -16,6 +16,5 @@ public class UpdateEmployeeCommandValidator : AbstractValidator<UpdateEmployeeCo
         RuleFor(c => c.RestaurantId).NotEmpty();
         RuleFor(c => c.Restaurant).NotEmpty();
         RuleFor(c => c.BirthDate).NotEmpty();
-
     }
 }

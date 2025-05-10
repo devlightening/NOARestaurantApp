@@ -1,4 +1,3 @@
-using Domain.Entities;
 using NArchitecture.Core.Application.Responses;
 
 namespace Application.Features.Employees.Commands.Update;

@@ -6,13 +6,12 @@ using Domain.Entities;
 using NArchitecture.Core.Application.Pipelines.Authorization;
 using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Pipelines.Logging;
-using NArchitecture.Core.Application.Pipelines.Transaction;
 using MediatR;
 using static Application.Features.Employees.Constants.EmployeesOperationClaims;
 
 namespace Application.Features.Employees.Commands.Create;
 
-public class CreateEmployeeCommand : IRequest<CreatedEmployeeResponse>, ISecuredRequest, ICacheRemoverRequest, ILoggableRequest, ITransactionalRequest
+public class CreateEmployeeCommand : IRequest<CreatedEmployeeResponse>, ISecuredRequest, ICacheRemoverRequest, ILoggableRequest
 {
     public string Name { get; set; }
     public string Surname { get; set; }
@@ -22,7 +21,6 @@ public class CreateEmployeeCommand : IRequest<CreatedEmployeeResponse>, ISecured
     public string Position { get; set; }
     public Guid RestaurantId { get; set; }
     public Restaurant Restaurant { get; set; }
-
     public DateTime BirthDate { get; set; }
 
     public string[] Roles => [Admin, Write, EmployeesOperationClaims.Create];
@@ -47,16 +45,6 @@ public class CreateEmployeeCommand : IRequest<CreatedEmployeeResponse>, ISecured
 
         public async Task<CreatedEmployeeResponse> Handle(CreateEmployeeCommand request, CancellationToken cancellationToken)
         {
-            await _employeeBusinessRules.EmployeeNameMustBeUnique(request.Name);
-            await _employeeBusinessRules.EmployeeSurnameMustBeUnique(request.Surname);
-            await _employeeBusinessRules.EmployeePhoneNumberMustBeUnique(request.PhoneNumber);
-            await _employeeBusinessRules.EmployeeIdShouldExistWhenSelected(request.RestaurantId, cancellationToken);
-            await _employeeBusinessRules.EmployeeEmailMustBeUnique(request.Email);
-            await _employeeBusinessRules.EmployeeCannotBeAssignedToMultipleRestaurants(request.Email, request.RestaurantId);
-            await _employeeBusinessRules.EmployeeMustBeAtLeast18YearsOld(request.BirthDate);
-            await _employeeBusinessRules.EmailFormatMustBeValid(request.Address);
-            await _employeeBusinessRules.PhoneNumberFormatMustBeValid(request.PhoneNumber);
-
             Employee employee = _mapper.Map<Employee>(request);
 
             await _employeeRepository.AddAsync(employee);

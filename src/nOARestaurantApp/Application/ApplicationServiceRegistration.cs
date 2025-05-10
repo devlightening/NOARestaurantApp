@@ -22,6 +22,7 @@ using NArchitecture.Core.Security.DependencyInjection;
 using Application.Services.Restaurants;
 using Application.Services.RestaurantTables;
 using Application.Services.Employees;
+using Application.Services.Menus;
 
 namespace Application;
 
@@ -66,6 +67,8 @@ public static class ApplicationServiceRegistration
         services.AddScoped<IRestaurantService, RestaurantManager>();
         services.AddScoped<IRestaurantTableService, RestaurantTableManager>();
         services.AddScoped<IEmployeeService, EmployeeManager>();
+        services.AddScoped<IEmployeeService, EmployeeManager>();
+        services.AddScoped<IMenuService, MenuManager>();
         return services;
     }
 
