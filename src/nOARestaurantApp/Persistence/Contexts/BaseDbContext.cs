@@ -16,6 +16,7 @@ public class BaseDbContext : DbContext
     public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
     public DbSet<Restaurant> Restaurants { get; set; }
     public DbSet<RestaurantTable> RestaurantTables { get; set; }
+    public DbSet<Employee> Employees { get; set; }
 
     public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration)
         : base(dbContextOptions)

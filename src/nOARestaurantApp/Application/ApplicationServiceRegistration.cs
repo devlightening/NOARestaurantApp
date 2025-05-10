@@ -21,6 +21,7 @@ using NArchitecture.Core.Mailing.MailKit;
 using NArchitecture.Core.Security.DependencyInjection;
 using Application.Services.Restaurants;
 using Application.Services.RestaurantTables;
+using Application.Services.Employees;
 
 namespace Application;
 
@@ -64,6 +65,7 @@ public static class ApplicationServiceRegistration
         services.AddScoped<IRestaurantService, RestaurantManager>();
         services.AddScoped<IRestaurantService, RestaurantManager>();
         services.AddScoped<IRestaurantTableService, RestaurantTableManager>();
+        services.AddScoped<IEmployeeService, EmployeeManager>();
         return services;
     }
 

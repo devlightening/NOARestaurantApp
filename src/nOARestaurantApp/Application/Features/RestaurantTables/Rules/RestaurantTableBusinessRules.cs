@@ -65,5 +65,6 @@ public class RestaurantTableBusinessRules : BaseBusinessRules
             throw new BusinessException(RestaurantTablesBusinessMessages.InvalidTableLocation);
     }
 
+    public async Task 
     
 }

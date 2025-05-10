@@ -42,7 +42,7 @@ public class CreateRestaurantTableCommand : IRequest<CreatedRestaurantTableRespo
             CreatedRestaurantTableResponse response = _mapper.Map<CreatedRestaurantTableResponse>(restaurantTable);
             return response;
             
-            //burada kalındı 09.05 
+            
         }
     }
 }

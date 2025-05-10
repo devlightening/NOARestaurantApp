@@ -1,10 +1,10 @@
-﻿
-using NArchitecture.Core.Persistence.Repositories;
+using NArchitecture.Core.Application.Dtos;
 
-namespace Domain.Entities;
+namespace Application.Features.Employees.Queries.GetList;
 
-public class Employee : Entity<Guid>
+public class GetListEmployeeListItemDto : IDto
 {
+    public Guid Id { get; set; }
     public string Name { get; set; }
     public string Surname { get; set; }
     public string PhoneNumber { get; set; }
@@ -12,8 +12,5 @@ public class Employee : Entity<Guid>
     public string Address { get; set; }
     public string Position { get; set; }
     public Guid RestaurantId { get; set; }
-    public Restaurant Restaurant { get; set; } = default!;
-    public int  Age { get; set; }
-
-
+    public Restaurant Restaurant { get; set; }
 }

@@ -1,0 +1,18 @@
+using Domain.Entities;
+using NArchitecture.Core.Application.Responses;
+
+namespace Application.Features.Employees.Commands.Update;
+
+public class UpdatedEmployeeResponse : IResponse
+{
+    public Guid Id { get; set; }
+    public string Name { get; set; }
+    public string Surname { get; set; }
+    public string PhoneNumber { get; set; }
+    public string Email { get; set; }
+    public string Address { get; set; }
+    public string Position { get; set; }
+    public Guid RestaurantId { get; set; }
+    public Restaurant Restaurant { get; set; }
+    public int Age { get; set; }
+}
