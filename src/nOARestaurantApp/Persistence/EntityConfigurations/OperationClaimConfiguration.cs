@@ -10,6 +10,7 @@ using Application.Features.Restaurants.Constants;
 using Application.Features.RestaurantTables.Constants;
 using Application.Features.Employees.Constants;
 using Application.Features.Menus.Constants;
+using Application.Features.Categories.Constants;
 
 namespace Persistence.EntityConfigurations;
 
@@ -167,6 +168,48 @@ public class OperationClaimConfiguration : IEntityTypeConfiguration<OperationCla
                 new() { Id = ++lastId, Name = EmployeesOperationClaims.Create },
                 new() { Id = ++lastId, Name = EmployeesOperationClaims.Update },
                 new() { Id = ++lastId, Name = EmployeesOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Menus
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = MenusOperationClaims.Admin },
+                new() { Id = ++lastId, Name = MenusOperationClaims.Read },
+                new() { Id = ++lastId, Name = MenusOperationClaims.Write },
+                new() { Id = ++lastId, Name = MenusOperationClaims.Create },
+                new() { Id = ++lastId, Name = MenusOperationClaims.Update },
+                new() { Id = ++lastId, Name = MenusOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Menus
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = MenusOperationClaims.Admin },
+                new() { Id = ++lastId, Name = MenusOperationClaims.Read },
+                new() { Id = ++lastId, Name = MenusOperationClaims.Write },
+                new() { Id = ++lastId, Name = MenusOperationClaims.Create },
+                new() { Id = ++lastId, Name = MenusOperationClaims.Update },
+                new() { Id = ++lastId, Name = MenusOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Categories
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = CategoriesOperationClaims.Admin },
+                new() { Id = ++lastId, Name = CategoriesOperationClaims.Read },
+                new() { Id = ++lastId, Name = CategoriesOperationClaims.Write },
+                new() { Id = ++lastId, Name = CategoriesOperationClaims.Create },
+                new() { Id = ++lastId, Name = CategoriesOperationClaims.Update },
+                new() { Id = ++lastId, Name = CategoriesOperationClaims.Delete },
             ]
         );
         #endregion

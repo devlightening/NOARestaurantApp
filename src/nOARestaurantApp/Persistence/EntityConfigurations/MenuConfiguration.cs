@@ -13,9 +13,9 @@ public class MenuConfiguration : IEntityTypeConfiguration<Menu>
         builder.Property(m => m.Id).HasColumnName("Id").IsRequired();
         builder.Property(m => m.Name).HasColumnName("Name");
         builder.Property(m => m.Description).HasColumnName("Description");
-        builder.Property(m => m.Price).HasColumnName("Price");
-        builder.Property(m => m.Photo).HasColumnName("Photo");
         builder.Property(m => m.RestaurantId).HasColumnName("RestaurantId");
+        builder.Property(m => m.Photo).HasColumnName("Photo");
+        builder.Property(m => m.IsActive).HasColumnName("IsActive");
         builder.Property(m => m.Restaurant).HasColumnName("Restaurant");
         builder.Property(m => m.CreatedDate).HasColumnName("CreatedDate").IsRequired();
         builder.Property(m => m.UpdatedDate).HasColumnName("UpdatedDate");

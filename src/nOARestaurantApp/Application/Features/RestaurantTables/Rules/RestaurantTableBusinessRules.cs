@@ -57,13 +57,12 @@ public class RestaurantTableBusinessRules : BaseBusinessRules
             throw new BusinessException(RestaurantTablesBusinessMessages.TableNumberMustBeUniqueInRestaurant);
     }
 
-    public async Task TableLocationMustBeValid(string location)
+    public void TableLocationMustBeValid(string location)
     {
-        var validLocations = new List<string> { "Ýç Mekan", "Dýþ Mekan", "Balkon", "Bahçe" };
-
-        if (!validLocations.Contains(location))
+        if (!Enum.TryParse<TableLocation>(location, ignoreCase: true, out _))
             throw new BusinessException(RestaurantTablesBusinessMessages.InvalidTableLocation);
     }
 
-    
+
+
 }

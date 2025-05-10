@@ -18,6 +18,7 @@ public class BaseDbContext : DbContext
     public DbSet<RestaurantTable> RestaurantTables { get; set; }
     public DbSet<Employee> Employees { get; set; }
     public DbSet<Menu> Menus { get; set; }
+    public DbSet<Category> Categories { get; set; }
 
     public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration)
         : base(dbContextOptions)

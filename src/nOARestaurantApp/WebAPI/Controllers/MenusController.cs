@@ -51,4 +51,12 @@ public class MenusController : BaseController
         GetListResponse<GetListMenuListItemDto> response = await Mediator.Send(getListMenuQuery);
         return Ok(response);
     }
+    [HttpGet("getall")]
+    public async Task<IActionResult> GetAll()
+    {
+        GetListMenuQuery getListMenuQuery = new() { PageRequest = new PageRequest { PageSize = 1000, PageIndex = 0 } };
+        GetListResponse<GetListMenuListItemDto> response = await Mediator.Send(getListMenuQuery);
+        return Ok(response);
+    }
+
 }

@@ -23,6 +23,7 @@ using Application.Services.Restaurants;
 using Application.Services.RestaurantTables;
 using Application.Services.Employees;
 using Application.Services.Menus;
+using Application.Services.Categories;
 
 namespace Application;
 
@@ -68,6 +69,9 @@ public static class ApplicationServiceRegistration
         services.AddScoped<IRestaurantTableService, RestaurantTableManager>();
         services.AddScoped<IEmployeeService, EmployeeManager>();
         services.AddScoped<IEmployeeService, EmployeeManager>();
+        services.AddScoped<IMenuService, MenuManager>();
+        services.AddScoped<IMenuService, MenuManager>();
+        services.AddScoped<ICategoryService, CategoryManager>();
         services.AddScoped<IMenuService, MenuManager>();
         return services;
     }
