@@ -13,7 +13,7 @@ public class Employee : Entity<Guid>
     public string Position { get; set; }
     public Guid RestaurantId { get; set; }
     public Restaurant Restaurant { get; set; } = default!;
-    public int  Age { get; set; }
+    public DateTime  BirthDate { get; set; }
 
 
 }

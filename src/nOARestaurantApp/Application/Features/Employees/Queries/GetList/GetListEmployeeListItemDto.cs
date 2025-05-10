@@ -1,3 +1,4 @@
+using Domain.Entities;
 using NArchitecture.Core.Application.Dtos;
 
 namespace Application.Features.Employees.Queries.GetList;
@@ -13,4 +14,8 @@ public class GetListEmployeeListItemDto : IDto
     public string Position { get; set; }
     public Guid RestaurantId { get; set; }
     public Restaurant Restaurant { get; set; }
+
+    public DateTime BirthDate { get; set; }
+
+
 }

@@ -14,5 +14,5 @@ public class CreatedEmployeeResponse : IResponse
     public string Position { get; set; }
     public Guid RestaurantId { get; set; }
     public Restaurant Restaurant { get; set; }
-    public int Age { get; set; }
+    public DateTime BirthDate { get; set; }
 }

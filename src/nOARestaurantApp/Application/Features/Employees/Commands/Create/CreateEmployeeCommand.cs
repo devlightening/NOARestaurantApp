@@ -23,6 +23,8 @@ public class CreateEmployeeCommand : IRequest<CreatedEmployeeResponse>, ISecured
     public Guid RestaurantId { get; set; }
     public Restaurant Restaurant { get; set; }
 
+    public DateTime BirthDate { get; set; }
+
     public string[] Roles => [Admin, Write, EmployeesOperationClaims.Create];
 
     public bool BypassCache { get; }

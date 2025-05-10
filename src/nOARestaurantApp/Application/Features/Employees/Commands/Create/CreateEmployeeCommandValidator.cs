@@ -14,6 +14,7 @@ public class CreateEmployeeCommandValidator : AbstractValidator<CreateEmployeeCo
         RuleFor(c => c.Position).NotEmpty();
         RuleFor(c => c.RestaurantId).NotEmpty();
         RuleFor(c => c.Restaurant).NotEmpty();
-        RuleFor(c => c.Age).NotEmpty();
+        RuleFor(c => c.BirthDate).NotEmpty();
+
     }
 }
