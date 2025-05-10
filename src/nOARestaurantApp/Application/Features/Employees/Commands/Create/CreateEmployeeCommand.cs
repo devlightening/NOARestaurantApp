@@ -53,6 +53,7 @@ public class CreateEmployeeCommand : IRequest<CreatedEmployeeResponse>, ISecured
             await _employeeBusinessRules.EmployeeIdShouldExistWhenSelected(request.RestaurantId, cancellationToken);
             await _employeeBusinessRules.EmployeeEmailMustBeUnique(request.Email);
             await _employeeBusinessRules.EmployeeCannotBeAssignedToMultipleRestaurants(request.Email, request.RestaurantId);
+            await _employeeBusinessRules.EmployeeMustBeAtLeast18YearsOld(request.BirthDate);
 
             Employee employee = _mapper.Map<Employee>(request);
 

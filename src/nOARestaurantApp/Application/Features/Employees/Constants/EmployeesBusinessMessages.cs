@@ -16,4 +16,6 @@ public static class EmployeesBusinessMessages
     public const string EmployeeEmailMustBeUnique = "E-posta adresi benzersiz olmalýdýr .";
 
     public const string EmployeeCannotBeAssignedToMultipleRestaurants = "Çalýþan zaten bir restorana atanmýþ .";
+
+    public const string EmployeeMustBeAtLeast18YearsOld = "Çalýþan en az 18 yaþýnda olmalýdýr .";
 }

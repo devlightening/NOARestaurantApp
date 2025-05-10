@@ -56,7 +56,7 @@ public class EmployeeBusinessRules : BaseBusinessRules
 
     public async Task EmployeePhoneNumberMustBeUnique(string phoneNumber)
     {
-        var existing = await _employeeRepository.GetAsync(e.PhoneNumber == phoneNumber);
+        var existing = await _employeeRepository.GetAsync(e => e.PhoneNumber == phoneNumber);
         if(existing != null)
             throw new BusinessException(EmployeesBusinessMessages.EmployeePhoneNumberMustBeUnique);
     }
@@ -75,6 +75,14 @@ public class EmployeeBusinessRules : BaseBusinessRules
             throw new BusinessException(EmployeesBusinessMessages.EmployeeCannotBeAssignedToMultipleRestaurants);
     }
 
+    public  Task EmployeeMustBeAtLeast18YearsOld(DateTime birthDate)
+    {
+        int age = DateTime.Now.Year - birthDate.Year;
+        if (birthDate.Date > DateTime.Now.AddYears(-age)) age--; //doðum günü geçmemiþse yaþý bir azalt 
+        if(age<18)
+            throw new BusinessException(EmployeesBusinessMessages.EmployeeMustBeAtLeast18YearsOld);
+        return Task.CompletedTask;
+    }
 
 
 
