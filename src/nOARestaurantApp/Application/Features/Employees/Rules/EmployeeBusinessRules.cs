@@ -4,6 +4,7 @@ using NArchitecture.Core.Application.Rules;
 using NArchitecture.Core.CrossCuttingConcerns.Exception.Types;
 using NArchitecture.Core.Localization.Abstraction;
 using Domain.Entities;
+using System.Text.RegularExpressions;
 
 namespace Application.Features.Employees.Rules;
 
@@ -84,6 +85,19 @@ public class EmployeeBusinessRules : BaseBusinessRules
         return Task.CompletedTask;
     }
 
+    public Task EmailFormatMustBeValid(string email)
+    {
+        if(!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            throw new BusinessException(EmployeesBusinessMessages.EmailFormatMustBeValid);
+        return Task.CompletedTask;
+    }
+
+    public Task PhoneNumberFormatMustBeValid(string phoneNumber)
+    {
+        if (!Regex.IsMatch(phoneNumber, @"^05\d{9}$"))
+            throw new BusinessException(EmployeesBusinessMessages.PhoneNumberFormatMustBeValid);
+        return Task.CompletedTask;
+    }
 
 
 }

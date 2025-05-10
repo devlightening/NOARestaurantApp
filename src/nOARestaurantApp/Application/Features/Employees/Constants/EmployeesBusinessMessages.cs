@@ -18,4 +18,8 @@ public static class EmployeesBusinessMessages
     public const string EmployeeCannotBeAssignedToMultipleRestaurants = "Çalýþan zaten bir restorana atanmýþ .";
 
     public const string EmployeeMustBeAtLeast18YearsOld = "Çalýþan en az 18 yaþýnda olmalýdýr .";
+
+    public const string EmailFormatMustBeValid = "E-posta formatý geçerli olmalýdýr .";
+    public const string PhoneNumberFormatMustBeValid = "Telefon numarasý formatý geçerli olmalýdýr .";
+
 }
