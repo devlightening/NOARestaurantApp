@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NArchitecture.Core.Persistence.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,6 @@ public class Reservation : Entity<Guid>
     public int PeopleCount { get; set; }
     public DateTime ReservationTime { get; set; }
     public ReservationStatus Status { get; set; } = ReservationStatus.Pending;
-
     public Restaurant Restaurant { get; set; }
     public RestaurantTable? Table { get; set; }
 }

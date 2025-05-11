@@ -4,6 +4,8 @@ using NArchitecture.Core.Application.Rules;
 using NArchitecture.Core.CrossCuttingConcerns.Exception.Types;
 using NArchitecture.Core.Localization.Abstraction;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 namespace Application.Features.Employees.Rules;
 
@@ -39,4 +41,43 @@ public class EmployeeBusinessRules : BaseBusinessRules
         );
         await EmployeeShouldExistWhenSelected(employee);
     }
+
+    public async Task EmployeePhoneNumberShouldBeUnique(string phoneNumber, CancellationToken cancellationToken)
+    {
+        bool phoneNumberExists = await _employeeRepository
+            .Query()
+            .AnyAsync(e => e.PhoneNumber == phoneNumber, cancellationToken);
+
+        if (phoneNumberExists)
+            throw new BusinessException(EmployeesBusinessMessages.EmployeePhoneNumberShouldBeUnique);
+    }
+
+    public async Task EmployeeEmailShouldBeUnique(string email, CancellationToken cancellationToken)
+    {
+        bool emailExists = await _employeeRepository.Query().
+            AnyAsync(e => e.Email == email, cancellationToken);
+        if (emailExists)
+            throw new BusinessException(EmployeesBusinessMessages.EmployeeEmailShouldBeUnique);
+    }
+    public Task PhoneNumberFormatMustBeValid(string phoneNumber)
+    {
+        if (!Regex.IsMatch(phoneNumber, @"^05\d{9}$"))
+            throw new BusinessException(EmployeesBusinessMessages.EmployeePhoneNumberFormatInvalid);
+        return Task.CompletedTask;
+    }
+    public Task EmailFormatMustBeValid(string email)
+    {
+        if (!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            throw new BusinessException(EmployeesBusinessMessages.EmployeeEmailFormatInvalid);
+        return Task.CompletedTask;
+    }
+
+    public void EmployeePositionMustBeValid(string position)
+    {
+        bool isValid = Enum.GetNames(typeof(EmployeePosition)).Contains(position);
+        if (!isValid)
+            throw new BusinessException(EmployeesBusinessMessages.EmployeePositionInValid);
+    }
+
+
 }
